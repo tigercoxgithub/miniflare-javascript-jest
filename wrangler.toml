@@ -10,3 +10,7 @@ bindings = [
 [[migrations]]
 tag = "v1"
 new_classes = ["Counter"]
+
+[miniflare]
+live_reload = true
+durable_objects_persist = true # Defaults to ./.mf/do

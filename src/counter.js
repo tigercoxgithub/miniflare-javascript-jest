@@ -6,6 +6,19 @@ export class Counter {
   async fetch() {
     const count = (await this.storage.get("count")) ?? 0;
     this.storage.put("count", count + 1);
-    return new Response(String(count));
+
+    const body = `
+      <!DOCTYPE html>
+      <html>
+      <body>
+      <h1>${String(count)}</h1>
+        <p>Try update me hello!</p>
+      </body>
+      </html>
+    `;
+
+    return new Response(body, {
+      headers: { "Content-Type": "text/html; charset=utf-8" },
+    });
   }
 }
